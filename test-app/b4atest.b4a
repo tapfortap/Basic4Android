@@ -1,0 +1,116 @@
+﻿Version=2.52
+IconFile=
+NumberOfModules=0
+Package=com.tapfortap.b4a.test3
+DoNotOverwriteManifest=False
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.basic4ppc.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="7" android:targetSdkVersion="17"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'End of default text.~\n~'TapForTap~\n~AddApplicationText(~\n~<activity android:name="com.tapfortap.TapForTapActivity"/>)~\n~'End TapForTap~\n~
+UserTypesHint=
+NumberOfFiles=1
+File1=main.bal
+NumberOfLibraries=2
+Library1=core
+Library2=tapfortapbasic4android
+@EndOfDesignText@
+' Licensed under the MIT license
+' http://htmlpreview.github.com/?https://github.com/TapForTap/Documentation/blob/master/License.html
+' Copyright (c) 2013 Tap For Tap
+
+
+#Region  Project Attributes 
+	#ApplicationLabel: Tap for Tap B4A Test
+	#VersionCode: 1
+	#VersionName: 
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: unspecified
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: True
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+	Dim tftApiKey As String = "acb9e550dda1679b29401d26edb4f23b"
+	
+	Dim interstital As TapForTapInterstitial
+	interstital.setEventHandler("InterstitialEventHandler")
+	
+	Dim appwall As TapForTapAppWall
+	appwall.setEventHandler("AppWallEventHandler")
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	'These variables can only be accessed from this module.
+
+	Dim showAppWall As Button
+	Dim showInterstitial As Button
+
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	Dim tft As TapForTap
+	'Do not forget to load the layout file created with the visual designer. For example:
+	Activity.LoadLayout("main")
+	
+	showAppWall.Text = "Show App Wall"
+	showInterstitial.Text = "Show Interstitial"
+	
+	tft.initialize(tftApiKey)
+	
+	Dim adview As TapForTapAdView
+	adview.initialize()
+	adview.setEventHandler("AdViewEventHandler")
+	Dim adHeight = 50dip
+	Dim adWidth As Int = 50dip * 320/50
+	Dim left As Int = (GetDeviceLayoutValues.Width - adWidth) / 2 
+	Activity.AddView(adview, left,100%y - 50dip, adWidth, adHeight)
+	
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+
+Sub AdViewEventHandler_ReceiveAd
+	Log("AdViewEventHandler_ReceiveAd")
+End Sub
+
+Sub AdViewEventHandler_FailedToReceiveAd (Reason As String)
+	Log("AdViewEventHandler_FailedToReceiveAd" + Reason)
+End Sub
+
+Sub AdViewEventHandler_TapAd
+	Log("AdViewEventHandler_TapAd")
+End Sub
+
+Sub AppWallEventHandler_Dismissed
+	Log("AppWallEventHandler_Dismissed")
+End Sub
+
+Sub AppWallEventHandler_FailedToReceiveAd
+	Log("AppWallEventHandler_FailedToReceiveAd")
+End Sub
+
+Sub InterstitialEventHandler_Dismissed
+	Log("InterstitialEventHandler_Dismissed")
+End Sub
+
+Sub InterstitialEventHandler_FailedToReceiveAd
+	Log("InterstitialEventHandler_FailedToReceiveAd")
+End Sub
+
+Sub ShowAppWall_Click
+	appwall.show()
+End Sub
+Sub ShowInterstitial_Click
+	interstital.show()	
+End Sub

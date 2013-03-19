@@ -1,0 +1,4 @@
+library/release
+bin*
+.classpath
+test-app/Objects*
