@@ -33,7 +33,7 @@ Library2=tapfortapbasic4android
 Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be accessed from all modules.
-	Dim tftApiKey As String = "acb9e550dda1679b29401d26edb4f23b"
+	Dim tftApiKey As String = "Your Tap for Tap API key"
 	
 	Dim interstital As TapForTapInterstitial
 	interstital.setEventHandler("InterstitialEventHandler")
