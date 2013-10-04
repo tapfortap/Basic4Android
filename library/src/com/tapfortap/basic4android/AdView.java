@@ -12,32 +12,33 @@ import anywheresoftware.b4a.BA.ActivityObject;
 import anywheresoftware.b4a.BA.Events;
 import anywheresoftware.b4a.BA.ShortName;
 
-import com.tapfortap.AdView.AdViewListener;
+import com.tapfortap.Banner;
+import com.tapfortap.Banner.BannerListener;
 
 @Events(values={"ReceiveAd", "FailedToReceiveAd (Reason As String)", "OnTap"})
 @ShortName("TapForTapAdView")
 @ActivityObject
-public class AdView extends AbsObjectWrapper<com.tapfortap.AdView> {
+public class AdView extends AbsObjectWrapper<Banner> {
 
     /**
      * Create a new AdView and begin to load ads
      */
 	public void initialize(BA ba) {
-		setObject(new com.tapfortap.AdView(ba.activity));
+		setObject(Banner.create(ba.activity));
 	}
 	
 	/**
 	 * Start loading ads
 	 */
 	public void loadAds() {
-		getObject().loadAds();
+		getObject().startShowingAds();
 	}
 	
 	/**
 	 * Stop loading ads
 	 */
 	public void stopLoadingAds() {
-		getObject().stopLoadingAds();
+		getObject().stopShowingAds();
 		
 	}
 	
@@ -46,22 +47,25 @@ public class AdView extends AbsObjectWrapper<com.tapfortap.AdView> {
 	 * @param eventName
 	 */
 	public void setEventHandler(final BA ba, final String eventName) {
-		getObject().setListener(new AdViewListener() {
-		@Override
-		public void onFailToReceiveAd(String reason) {
-			ba.raiseEvent(getObject(), eventName.toLowerCase(BA.cul) + "_failedtoreceivead", reason);
-		}
-	
-		@Override
-		public void onReceiveAd() {
-			ba.raiseEvent(getObject(), eventName.toLowerCase(BA.cul) + "_receivead");	
-		}
-	
-		@Override
-		public void onTapAd() {
-			ba.raiseEvent(getObject(), eventName.toLowerCase(BA.cul) + "_tapad");	
-		};	
-	});
-		
+	    getObject().setListener(new BannerListener() {
+            
+            @Override
+            public void bannerOnTap(Banner banner) {
+                 ba.raiseEvent(getObject(), eventName.toLowerCase(BA.cul) + "_tapad");
+                
+            }
+            
+            @Override
+            public void bannerOnReceive(Banner banner) {
+                 ba.raiseEvent(getObject(), eventName.toLowerCase(BA.cul) + "_receivead");
+                
+            }
+            
+            @Override
+            public void bannerOnFail(Banner banner, String reason, Throwable throwable) {
+                 ba.raiseEvent(getObject(), eventName.toLowerCase(BA.cul) + "_failedtoreceivead", reason);
+                
+            }
+        });
 	}
 }

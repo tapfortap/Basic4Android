@@ -3,7 +3,7 @@ IconFile=
 NumberOfModules=0
 Package=com.tapfortap.b4a.test3
 DoNotOverwriteManifest=False
-ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.basic4ppc.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="7" android:targetSdkVersion="17"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'End of default text.~\n~'TapForTap~\n~AddApplicationText(~\n~<activity android:name="com.tapfortap.TapForTapActivity"/>)~\n~'End TapForTap~\n~
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.basic4ppc.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="7" android:targetSdkVersion="17"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'End of default text.~\n~'TapForTap~\n~AddApplicationText(~\n~<activity android:name="com.tapfortap.FullScreenAdActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>)~\n~'End TapForTap~\n~
 UserTypesHint=
 NumberOfFiles=1
 File1=main.bal
@@ -92,12 +92,36 @@ Sub AdViewEventHandler_TapAd
 	Log("AdViewEventHandler_TapAd")
 End Sub
 
+Sub AppWallEventHandler_ReceiveAd
+	Log("AppWallEventHandler_ReceiveAd")
+End Sub
+
+Sub AppWallEventHandler_ShowAd
+	Log("AppWallEventHandler_ShowAd")
+End Sub
+
+Sub AppWallEventHandler_TapAd
+	Log("AppWallEventHandler_TapAd")
+End Sub
+
 Sub AppWallEventHandler_Dismissed
 	Log("AppWallEventHandler_Dismissed")
 End Sub
 
 Sub AppWallEventHandler_FailedToReceiveAd
 	Log("AppWallEventHandler_FailedToReceiveAd")
+End Sub
+
+Sub InterstitialEventHandler_ReceiveAd
+	Log("InterstitialEventHandler_ReceiveAd")
+End Sub
+
+Sub InterstitialEventHandler_ShowAd
+	Log("InterstitialEventHandler_ShowAd")
+End Sub
+
+Sub InterstitialEventHandler_TapAd
+	Log("InterstitialEventHandler_TapAd")
 End Sub
 
 Sub InterstitialEventHandler_Dismissed

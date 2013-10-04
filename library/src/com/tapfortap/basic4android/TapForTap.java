@@ -28,8 +28,8 @@ public class TapForTap {
 	 * @param apiKey Your Tap for Tap API key
 	 */
 	public static void initialize(final BA ba, String apiKey) {
-	    com.tapfortap.TapForTap.plugin = "basic4aNDROID";
-        com.tapfortap.TapForTap.pluginVersion = "1.2.0";
+	    com.tapfortap.TapForTap.PLUGIN = "basic4aNDROID";
+        com.tapfortap.TapForTap.PLUGIN_VERSION = "1.3.0";
 	    com.tapfortap.TapForTap.initialize(ba.activity != null ? ba.activity : ba.context, apiKey);
 	}
 	
