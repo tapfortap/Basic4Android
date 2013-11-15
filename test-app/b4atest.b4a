@@ -53,6 +53,9 @@ End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	Dim tft As TapForTap
+	
+	Log("TftVersion = " & tft.TftVersion)
+	
 	'Do not forget to load the layout file created with the visual designer. For example:
 	Activity.LoadLayout("main")
 	

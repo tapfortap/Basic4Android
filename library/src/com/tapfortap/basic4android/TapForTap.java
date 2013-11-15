@@ -15,10 +15,10 @@ import anywheresoftware.b4a.BA.Version;
 
 import com.tapfortap.TapForTap.Gender;
 
-@Permissions(values={"android.permission.INTERNET" , "android.permission.ACCESS_NETWORK_STATE", "android.permission.WRITE_EXTERNAL_STORAGE"})
+@Permissions(values={"android.permission.INTERNET" , "android.permission.ACCESS_NETWORK_STATE", "android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.ACCESS_WIFI_STATE", "android.permission.READ_PHONE_STATE"})
 @ShortName("TapForTap")
 @Author("TapForTap")
-@Version(1.2f)
+@Version(1.4f)
 @ActivityObject
 public class TapForTap {
 	
@@ -29,8 +29,16 @@ public class TapForTap {
 	 */
 	public static void initialize(final BA ba, String apiKey) {
 	    com.tapfortap.TapForTap.PLUGIN = "basic4aNDROID";
-        com.tapfortap.TapForTap.PLUGIN_VERSION = "1.3.0";
+        com.tapfortap.TapForTap.PLUGIN_VERSION = "1.3.1";
 	    com.tapfortap.TapForTap.initialize(ba.activity != null ? ba.activity : ba.context, apiKey);
+	}
+	
+	/**
+	 * Get the version of the Tap for Tap SDK
+	 * @return Tap for Tap SDK version
+	 */
+	public static String getTftVersion() {
+		return com.tapfortap.TapForTap.getVersion();
 	}
 	
 	/**

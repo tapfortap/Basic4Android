@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <doclet-version-NOT-library-version>1.02</doclet-version-NOT-library-version>
+    <class>
+        <name>com.tapfortap.basic4android.TapForTap</name>
+        <shortname>TapForTap</shortname>
+        <owner>activity</owner>
+        <permission>android.permission.INTERNET</permission>
+        <permission>android.permission.ACCESS_NETWORK_STATE</permission>
+        <permission>android.permission.WRITE_EXTERNAL_STORAGE</permission>
+        <permission>android.permission.ACCESS_WIFI_STATE</permission>
+        <permission>android.permission.READ_PHONE_STATE</permission>
+        <method>
+            <name>initialize</name>
+            <comment>Initializes Tap for Tap so that you can begin showing ads
+apiKey: Your Tap for Tap API key</comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>ba</name>
+                <type>anywheresoftware.b4a.BA</type>
+            </parameter>
+            <parameter>
+                <name>apiKey</name>
+                <type>java.lang.String</type>
+            </parameter>
+        </method>
+        <property>
+            <name>YearOfBirth</name>
+            <parameter>
+                <name>yearOfBirth</name>
+                <type>int</type>
+            </parameter>
+            <comment>Set the user's year of birth</comment>
+        </property>
+        <property>
+            <name>TftVersion</name>
+            <returntype>java.lang.String</returntype>
+            <comment>Get the version of the Tap for Tap SDK</comment>
+        </property>
+        <property>
+            <name>Gender</name>
+            <parameter>
+                <name>gender</name>
+                <type>int</type>
+            </parameter>
+            <comment>Set the user's gender</comment>
+        </property>
+        <property>
+            <name>UserAccountId</name>
+            <parameter>
+                <name>userAccountId</name>
+                <type>java.lang.String</type>
+            </parameter>
+            <comment>Set a custom user id</comment>
+        </property>
+    </class>
+    <class>
+        <name>com.tapfortap.basic4android.Interstitial</name>
+        <shortname>TapForTapInterstitial</shortname>
+        <owner>process</owner>
+        <event>Dismissed</event>
+        <event>FailedToReceiveAd</event>
+        <method>
+            <name>show</name>
+            <comment>Shows and Interstitial</comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>ba</name>
+                <type>anywheresoftware.b4a.BA</type>
+            </parameter>
+        </method>
+        <method>
+            <name>prepare</name>
+            <comment>Prepares an Interstitial</comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>ba</name>
+                <type>anywheresoftware.b4a.BA</type>
+            </parameter>
+        </method>
+        <method>
+            <name>setEventHandler</name>
+            <comment>Set Interstitial the event handler.</comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>ba</name>
+                <type>anywheresoftware.b4a.BA</type>
+            </parameter>
+            <parameter>
+                <name>eventName</name>
+                <type>java.lang.String</type>
+            </parameter>
+        </method>
+    </class>
+    <class>
+        <name>com.tapfortap.basic4android.AppWall</name>
+        <shortname>TapForTapAppWall</shortname>
+        <owner>process</owner>
+        <event>Dismissed</event>
+        <event>FailedToReceiveAd</event>
+        <method>
+            <name>show</name>
+            <comment>Shows and AppWall</comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>ba</name>
+                <type>anywheresoftware.b4a.BA</type>
+            </parameter>
+        </method>
+        <method>
+            <name>prepare</name>
+            <comment>Prepares an AppWall</comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>ba</name>
+                <type>anywheresoftware.b4a.BA</type>
+            </parameter>
+        </method>
+        <method>
+            <name>setEventHandler</name>
+            <comment>Set AppWall the event handler.</comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>ba</name>
+                <type>anywheresoftware.b4a.BA</type>
+            </parameter>
+            <parameter>
+                <name>eventName</name>
+                <type>java.lang.String</type>
+            </parameter>
+        </method>
+    </class>
+    <class>
+        <name>com.tapfortap.basic4android.AdView</name>
+        <shortname>TapForTapAdView</shortname>
+        <objectwrapper>com.tapfortap.Banner</objectwrapper>
+        <owner>activity</owner>
+        <event>ReceiveAd</event>
+        <event>FailedToReceiveAd (Reason As String)</event>
+        <event>OnTap</event>
+        <method>
+            <name>stopLoadingAds</name>
+            <comment>Stop loading ads</comment>
+            <returntype>void</returntype>
+        </method>
+        <method>
+            <name>loadAds</name>
+            <comment>Start loading ads</comment>
+            <returntype>void</returntype>
+        </method>
+        <method>
+            <name>setEventHandler</name>
+            <comment>Set this AdView's event handler.
+eventName: </comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>ba</name>
+                <type>anywheresoftware.b4a.BA</type>
+            </parameter>
+            <parameter>
+                <name>eventName</name>
+                <type>java.lang.String</type>
+            </parameter>
+        </method>
+        <method>
+            <name>IsInitialized</name>
+            <comment></comment>
+            <returntype>boolean</returntype>
+        </method>
+        <method>
+            <name>initialize</name>
+            <comment>Create a new AdView and begin to load ads</comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>ba</name>
+                <type>anywheresoftware.b4a.BA</type>
+            </parameter>
+        </method>
+    </class>
+    <version>1.4</version>
+    <author>TapForTap</author>
+</root>
